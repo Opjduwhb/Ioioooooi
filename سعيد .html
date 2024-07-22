@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع الكرة تحت الأكواب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .cup {
+            width: 100px;
+            height: 150px;
+            background-color: lightgray;
+            border: 2px solid darkgray;
+            border-radius: 10px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ball {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            transition: top 0.5s ease, left 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>تتبع الكرة تحت الأكواب</h1>
+    <div class="container">
+        <div class="cup" id="cupA">كوب A</div>
+        <div class="cup" id="cupB">كوب B</div>
+        <div class="cup" id="cupC">كوب C</div>
+    </div>
+    <div class="ball" id="ball"></div>
+
+    <script>
+        // تحريك الكرة بين الأكواب
+        let ball = document.getElementById('ball');
+        let cups = document.querySelectorAll('.cup');
+
+        let moveBall = (cupId) => {
+            let cup = document.getElementById(cupId);
+            let cupRect = cup.getBoundingClientRect();
+            let ballRect = ball.getBoundingClientRect();
+
+            let centerX = cupRect.left + cupRect.width / 2 - ballRect.width / 2;
+            let centerY = cupRect.top + cupRect.height / 2 - ballRect.height / 2;
+
+            ball.style.top = centerY + 'px';
+            ball.style.left = centerX + 'px';
+        };
+
+        // تحديد حركة الكرة بين الأكواب
+        moveBall('cupB'); // تحريك الكرة إلى كوب B
+    </script>
+</body>
+</html>
