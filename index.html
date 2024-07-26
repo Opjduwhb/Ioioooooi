@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Pusher Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 500px;
+            height: 80vh;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #e9ecef;
+        }
+
+        .chat-message {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: fit-content;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .chat-message.user {
+            background-color: #6c757d;
+            align-self: flex-end;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chat Room
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <!-- Messages will be appended here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message here..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Pusher -->
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+        // إعدادات Pusher
+        const pusher = new Pusher('656516b4a9c513f41df2', {
+            cluster: 'mt1',
+            encrypted: true
+        });
+
+        const channel = pusher.subscribe('my-channel');
+
+        // عناصر DOM
+        const chatMessages = document.getElementById('chat-messages');
+        const messageInput = document.getElementById('message-input');
+
+        // الاستماع للرسائل الجديدة
+        channel.bind('my-event', function(data) {
+            receiveMessage(data);
+        });
+
+        function receiveMessage(data) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message';
+            messageElement.textContent = data.message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                // إنشاء عنصر جديد للرسالة
+                const userMessageElement = document.createElement('div');
+                userMessageElement.className = 'chat-message user';
+                userMessageElement.textContent = message;
+                chatMessages.appendChild(userMessageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+
+                // إرسال الرسالة إلى الخادم
+                fetch('/Chat/SendMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                messageInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
 
