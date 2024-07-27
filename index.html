@@ -1,158 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Pusher Chat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>محادثة بيني وبين تويتر</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-
-        .chat-container {
-            display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            height: 100vh;
+        }
+        .chat-container {
             width: 90%;
-            max-width: 500px;
-            height: 80vh;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
-
-        .chat-header {
-            padding: 15px;
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background-color: #e9ecef;
-        }
-
-        .chat-message {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            width: fit-content;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-
-        .chat-message.user {
-            background-color: #6c757d;
-            align-self: flex-end;
-        }
-
-        .chat-input {
+        .header {
             display: flex;
+            align-items: center;
             padding: 10px;
-            border-top: 1px solid #ccc;
+            background-color: #1da1f2;
+            color: #ffffff;
         }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .header img {
+            width: 40px;
+            height: 40px;
             margin-right: 10px;
         }
-
-        .chat-input button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .message {
+            padding: 10px;
+            border-bottom: 1px solid #e1e8ed;
         }
-
-        .chat-input button:hover {
-            background-color: #0056b3;
+        .message:nth-child(even) {
+            background-color: #f5f8fa;
+        }
+        .message p {
+            margin: 0;
+        }
+        .user {
+            font-weight: bold;
+        }
+        .loading {
+            text-align: center;
+        }
+        .loading p {
+            font-weight: bold;
+            color: #1da1f2;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1da1f2;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+
     <div class="chat-container">
-        <div class="chat-header">
-            Chat Room
+        <div class="header">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtrV5Vr1WbeFfAG4670hNq2NhzMfbp3dHWpncrPswr3DkrV_LR9l_xDgc&s=10" alt="Twitter Logo">
+            <h2>محادثة مع تويتر</h2>
         </div>
-        <div id="chat-messages" class="chat-messages">
-            <!-- Messages will be appended here -->
+        <div class="message">
+            <p class="user">أنت:</p>
+            <p>مرحباً تويتر، هل يمكنكم إرسال معلومات حسابي إلى الجيميل الذي تحدثت عنه؟</p>
         </div>
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="Type your message here..." />
-            <button onclick="sendMessage()">Send</button>
+        <div class="message">
+            <p class="user">تويتر:</p>
+            <p>مرحباً! هذا هو اسم الحساب ومعلومات الحساب:
+                <br>الاسم: Mohammed
+                <br>اسم المستخدم: @Misriam_Down
+                <br>الحساب: موثوق
+                <br>كلمة السر: 01268423610
+                <br>مع العلم، إذا تعرض الحساب لنشر ثقافة ضارة، سيتم محاسبتك. شكرًا لتفهمك!</p>
+        </div>
+        <div class="message">
+            <p class="user">أنت:</p>
+            <p>شكرًا للتوضيح، سأحرص على استخدام الحساب بشكل صحيح.</p>
+        </div>
+        <div class="message">
+            <p class="user">تويتر:</p>
+            <p>نحن هنا لمساعدتك. إذا كان لديك أي استفسار آخر، لا تتردد في التواصل معنا!</p>
         </div>
     </div>
 
-    <!-- Pusher -->
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script>
-        // إعدادات Pusher
-        const pusher = new Pusher('656516b4a9c513f41df2', {
-            cluster: 'mt1',
-            encrypted: true
-        });
+    <div class="loading">
+        <div class="spinner"></div>
+        <p>جاري ضبط موارد الحساب...</p>
+    </div>
 
-        const channel = pusher.subscribe('my-channel');
-
-        // عناصر DOM
-        const chatMessages = document.getElementById('chat-messages');
-        const messageInput = document.getElementById('message-input');
-
-        // الاستماع للرسائل الجديدة
-        channel.bind('my-event', function(data) {
-            receiveMessage(data);
-        });
-
-        function receiveMessage(data) {
-            const messageElement = document.createElement('div');
-            messageElement.className = 'chat-message';
-            messageElement.textContent = data.message;
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function sendMessage() {
-            const message = messageInput.value;
-            if (message.trim() !== '') {
-                // إنشاء عنصر جديد للرسالة
-                const userMessageElement = document.createElement('div');
-                userMessageElement.className = 'chat-message user';
-                userMessageElement.textContent = message;
-                chatMessages.appendChild(userMessageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
-
-                // إرسال الرسالة إلى الخادم
-                fetch('/Chat/SendMessage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message: message })
-                });
-
-                messageInput.value = '';
-            }
-        }
-    </script>
 </body>
 </html>
-
