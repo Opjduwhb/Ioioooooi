@@ -1,1 +1,191 @@
 
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع استثماري</title>
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhQHs7De7yL0C5AxfYBj53qcWiil1rqkXBg&usqp=CAU');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .header {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #000;
+        }
+        .message-box, .number-box, .permission-box {
+            display: none;
+            position: fixed;
+            right: -300px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            border-radius: 8px;
+            transition: right 1s, top 1s;
+            width: 300px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .message-box.active, .number-box.active, .permission-box.active {
+            right: calc(50% - 150px); /* مركز الصفحة */
+            top: 50%;
+        }
+        .message-box {
+            color: #0f0;
+        }
+        .message-box h2 {
+            margin-top: 0;
+            font-size: 2rem;
+            text-shadow: 0 0 10px #0f0;
+        }
+        .message-box p {
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #0f0;
+        }
+        .message-box input, .number-box input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        .message-box button, .number-box button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .message-box button.yes, .number-box button.yes {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .message-box button.no, .number-box button.no {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .number-box {
+            color: #ff0;
+        }
+        .number-box h2, .number-box p {
+            margin-top: 0;
+            text-shadow: 0 0 10px #ff0;
+        }
+        .permission-box {
+            color: #00f;
+        }
+        .permission-box h2, .permission-box p {
+            margin-top: 0;
+            text-shadow: 0 0 10px #00f;
+        }
+        .video-container {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 320px;
+            height: 240px;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        محمد فاروق عثمان
+    </div>
+
+    <div class="message-box" id="messageBox">
+        <h2 class="hacker-effect">مرحبا بك</h2>
+        <p class="hacker-effect">ما سبب وجودك هنا وما غرضك؟</p>
+        <input type="text" id="reasonInput" placeholder="اكتب السبب هنا">
+        <button class="yes hacker-effect" onclick="showNumberBox()">أرسل</button>
+    </div>
+
+    <div class="number-box" id="numberBox">
+        <h2 class="hacker-effect">إدخال الرقم</h2>
+        <p class="hacker-effect">يرجى إدخال الرقم لفتح الكاميرا.</p>
+        <input type="text" id="phoneNumberInput" placeholder="اكتب الرقم هنا">
+        <button class="yes hacker-effect" onclick="openCamera()">فتح الكاميرا</button>
+    </div>
+
+    <div class="permission-box" id="permissionBox">
+        <h2 class="hacker-effect">طلب أذونات</h2>
+        <p class="hacker-effect">نحتاج إذن للوصول إلى الكاميرا. يرجى منح الإذن لكي نتمكن من عرض الفيديو.</p>
+        <button class="yes hacker-effect" onclick="requestPermissions()">نعم</button>
+        <button class="no hacker-effect" onclick="denyPermissions()">لا</button>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+        <video id="videoElement" autoplay></video>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('messageBox').style.display = 'block';
+                setTimeout(() => document.getElementById('messageBox').classList.add('active'), 1000); // ظهور الرسالة بعد ثانية
+            }, 1000); // تظهر الرسالة بعد ثانية واحدة
+        }
+
+        function showNumberBox() {
+            document.getElementById('messageBox').style.display = 'none';
+            var numberBox = document.getElementById('numberBox');
+            numberBox.style.display = 'block';
+            setTimeout(() => numberBox.classList.add('active'), 500); // ظهور نافذة إدخال الرقم بعد نصف ثانية
+        }
+
+        function openCamera() {
+            var phoneNumber = document.getElementById('phoneNumberInput').value; // قراءة الرقم المدخل
+            alert("الرقم المدخل: " + phoneNumber); // عرض الرقم المدخل (اختياري)
+            document.getElementById('numberBox').style.display = 'none';
+            document.getElementById('permissionBox').style.display = 'block';
+            setTimeout(() => document.getElementById('permissionBox').classList.add('active'), 500); // ظهور طلب الأذونات بعد نصف ثانية
+        }
+
+        function requestPermissions() {
+            alert("طلب الأذونات لنجاح الوصول إلى الكاميرا والملفات قد تم. يرجى منح الإذن في إعدادات المتصفح.");
+            document.getElementById('permissionBox').style.display = 'none';
+            document.getElementById('videoContainer').style.display = 'block';
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    var videoElement = document.getElementById('videoElement');
+                    videoElement.srcObject = stream;
+                })
+                .catch(function(err) {
+                    console.log("لم يتم منح إذن الوصول إلى الكاميرا: ", err);
+                });
+        }
+
+        function denyPermissions() {
+            alert("لم يتم منح إذن الوصول. يرجى منح الإذن في إعدادات المتصفح.");
+        }
+    </script>
+
+</body>
+</html>
