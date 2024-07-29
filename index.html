@@ -3,24 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تم قفل الموقع</title>
+    <title>صالون الحلاقة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7DqaLrn2mI43Q2qp5VjW-LB_hKjMQRJw8Aw&usqp=CAU');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Tajawal', sans-serif;
             margin: 0;
-            color: white;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            padding: 0;
+            background: #f3f4f6;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+        .intro {
+            background: linear-gradient(135deg, #4fa49a, #d9d9d9);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .intro:hover {
+            transform: scale(1.05);
+        }
+        .services, .hours, .location {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #4fa49a;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul li {
+            flex: 1 1 45%;
+            background: #f8f9fa;
+            margin: 10px;
+            padding: 15px;
+            border-left: 5px solid #4fa49a;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        ul li:hover {
+            background: #e9ecef;
+            transform: translateY(-5px);
+        }
+        .icon {
+            margin-right: 10px;
+            color: #4fa49a;
+            font-size: 24px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
         }
     </style>
+    <!-- إضافة مكتبة الأيقونات من Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div>تم قفل الموقع يا منه مرحبا بك</div>
+    <header>
+        <h1>صالون الحلاقة</h1>
+    </header>
+
+    <div class="container">
+        <section class="intro">
+            <h2>أهلاً بك في صالون الحلاقة</h2>
+            <p>نحن نقدم خدمات حلاقة احترافية لجميع الأعمار. زيارتك لنا تجربة مميزة ومريحة.</p>
+        </section>
+
+        <section class="services">
+            <h2>الخدمات</h2>
+            <ul>
+                <li><i class="icon fas fa-cut"></i>حلاقة شعر رجالية</li>
+                <li><i class="icon fas fa-beard"></i>حلاقة ولحية</li>
+                <li><i class="icon fas fa-child"></i>تصفيف شعر للأطفال</li>
+                <li><i class="icon fas fa-spa"></i>معالجة الشعر والتزيين</li>
+            </ul>
+        </section>
+
+        <section class="hours">
+            <h2>ساعات العمل</h2>
+            <ul>
+                <li><i class="icon fas fa-clock"></i>الإثنين - الجمعة: 9:00 صباحًا - 8:00 مساءً</li>
+                <li><i class="icon fas fa-clock"></i>السبت: 10:00 صباحًا - 6:00 مساءً</li>
+                <li><i class="icon fas fa-clock"></i>الأحد: مغلق</li>
+            </ul>
+        </section>
+
+        <section class="location">
+            <h2>الموقع</h2>
+            <p><i class="icon fas fa-map-marker-alt"></i>123 شارع رئيسي، مدينة، دولة</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2024 صالون الحلاقة</p>
+    </footer>
 </body>
 </html>
