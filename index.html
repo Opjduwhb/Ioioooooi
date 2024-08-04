@@ -3,209 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة شهد للاستثمار</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>نظام اختراق</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://i.postimg.cc/RVMbQ2RH/received-1883530415486124.jpg') no-repeat center center fixed;
+            height: 100vh;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp64uRdVKoqdt35F1gDZDY1oOX4uJtJt0aSw&usqp=CAU') no-repeat center center fixed;
             background-size: cover;
-            color: #333;
-        }
-        header {
-            background-color: rgba(52, 73, 94, 0.8); /* Background with opacity */
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        header img {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: rgba(44, 62, 80, 0.8); /* Background with opacity */
-        }
-        nav a {
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #1abc9c;
+            font-family: 'Courier New', Courier, monospace;
+            color: #0f0;
+            overflow: hidden;
         }
         .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .investment-section {
-            margin-bottom: 40px;
-        }
-        .investment-section h2 {
-            border-bottom: 2px solid #1abc9c;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            color: #1abc9c;
-        }
-        .investment-option {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: white;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .investment-option:hover {
-            transform: translateY(-5px);
-        }
-        .investment-icon {
-            font-size: 40px;
-            color: #1abc9c;
-            margin-right: 20px;
-        }
-        .investment-option h3 {
-            margin-top: 0;
-            color: #34495e;
-        }
-        .investment-details {
-            flex: 1;
-            margin-left: 20px;
-        }
-        .investment-details p {
-            margin: 5px 0;
-        }
-        .return-rate {
-            color: #e74c3c;
-        }
-        .invest-now-btn {
-            background-color: #1abc9c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .invest-now-btn:hover {
-            background-color: #16a085;
-        }
-        footer {
-            background-color: rgba(44, 62, 80, 0.8); /* Background with opacity */
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-        }
-        .whatsapp-link {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50px;
-            width: auto;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            font-weight: bold;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            position: relative;
         }
-        .whatsapp-link:hover {
-            transform: scale(1.1);
+        .header-name {
+            font-size: 25px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #00ff00;
         }
-        .whatsapp-link i {
+        .message-box {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+        .header {
             font-size: 30px;
-            margin-left: 10px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .message {
+            font-size: 18px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .progress-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #00ff00;
+            width: 0;
+            animation: load 10s linear infinite;
+        }
+        @keyframes load {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://png.pngtree.com/png-vector/20220925/ourmid/pngtree-real-estate-icon-png-image_6216087.png" alt="شعار">
-        <h1>منصة شهد للاستثمار</h1>
-    </header>
-
-    <nav>
-        <a href="#real-estate">استثمارات العقارات</a>
-        <a href="#cars">استثمارات السيارات</a>
-        <a href="#contact">خدمة العملاء</a>
-    </nav>
-
     <div class="container">
-        <section id="real-estate" class="investment-section">
-            <h2>استثمارات العقارات</h2>
-            <div class="investment-option">
-                <i class="fas fa-building investment-icon"></i>
-                <div class="investment-details">
-                    <h3>استثمار في شقة سكنية</h3>
-                    <p>الاستثمار في شقق سكنية فاخرة يوفر عوائد مالية ممتازة.</p>
-                    <p class="return-rate">العائد المتوقع: 15% سنوياً</p>
-                </div>
-                <button class="invest-now-btn"><i class="fas fa-arrow-right"></i> استثمر الآن</button>
+        <div class="header-name">محمد فاروق عثمان</div>
+        <div class="message-box">
+            <div class="header">نظام اختراق</div>
+            <div class="message">
+                الآن يتم اختراق الرقم
+                \n\n
+                ٠١٠١٣٣٧٧٩٩٢
             </div>
-            <div class="investment-option">
-                <i class="fas fa-store-alt investment-icon"></i>
-                <div class="investment-details">
-                    <h3>استثمار في مجمع تجاري</h3>
-                    <p>استثمر في المراكز التجارية للحصول على عوائد عالية.</p>
-                    <p class="return-rate">العائد المتوقع: 20% سنوياً</p>
-                </div>
-                <button class="invest-now-btn"><i class="fas fa-arrow-right"></i> استثمر الآن</button>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
             </div>
-        </section>
-
-        <section id="cars" class="investment-section">
-            <h2>استثمارات السيارات</h2>
-            <div class="investment-option">
-                <i class="fas fa-car investment-icon"></i>
-                <div class="investment-details">
-                    <h3>استثمار في سيارات فاخرة</h3>
-                    <p>الاستثمار في السيارات الفاخرة يعتبر من أكثر الاستثمارات ربحية.</p>
-                    <p class="return-rate">العائد المتوقع: 25% سنوياً</p>
-                </div>
-                <button class="invest-now-btn"><i class="fas fa-arrow-right"></i> استثمر الآن</button>
-            </div>
-            <div class="investment-option">
-                <i class="fas fa-car-battery investment-icon"></i>
-                <div class="investment-details">
-                    <h3>استثمار في سيارات كهربائية</h3>
-                    <p>السيارات الكهربائية هي مستقبل الاستثمار في مجال السيارات.</p>
-                    <p class="return-rate">العائد المتوقع: 30% سنوياً</p>
-                </div>
-                <button class="invest-now-btn"><i class="fas fa-arrow-right"></i> استثمر الآن</button>
-            </div>
-        </section>
-
-        <section id="contact" class="investment-section">
-            <h2>خدمة العملاء</h2>
-            <p>للتواصل معنا، يرجى الاتصال على الرقم 01050079125 أو مراسلتنا عبر البريد الإلكتروني: support@shahdinvestments.com</p>
-        </section>
+        </div>
     </div>
 
-    <a href="https://wa.me/201050079125" class="whatsapp-link" target="_blank">
-        <i class="fab fa-whatsapp"></i> للتواصل مع خدمة العملاء
-    </a>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © 2024 منصة شهد للاستثمار</p>
-    </footer>
+    <script>
+        // بعد 1 دقيقة (60000 مللي ثانية) يتم تحويل المستخدم إلى صفحة أخرى
+        setTimeout(function() {
+            window.location.href = 'https://example.com/next-page'; // قم بتعديل الرابط إلى الصفحة المطلوبة
+        }, 60000); // 1 دقيقة
+    </script>
 </body>
 </html>
