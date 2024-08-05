@@ -3,167 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاستثمار في ملابس وأحذية</title>
+    <title>مصطفى المنسي للاستثمار</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* إعدادات الخطوط والألوان */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            color: #212529;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            overflow-x: hidden;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
+
         header {
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: #17a2b8;
+            color: #fff;
+            padding: 20px;
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         .balance {
-            background-color: #343a40;
-            color: #ffffff;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
             padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
             text-align: center;
             font-size: 1.2em;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #343a40;
         }
-        .balance i {
-            margin-left: 10px;
-        }
-        .balance button {
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-left: 15px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-        .balance button i {
-            margin-right: 8px;
-        }
-        .balance button:hover {
-            background-color: #218838;
-            transform: scale(1.05);
-        }
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            flex-grow: 1;
-        }
+
         .investment-option {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 15px;
         }
-        .investment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
+
         .investment-option h3 {
-            margin: 0 0 10px 0;
-            color: #007bff;
+            color: #343a40;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
         }
-        .investment-option p {
-            margin: 0 0 15px 0;
-            color: #666;
-        }
+
         .investment-option button {
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: #28a745;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 12px 25px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
             font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .investment-option button:hover {
+            background-color: #218838;
+        }
+
+        .fa-money-bill-wave {
+            color: #17a2b8;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .notification {
+            position: fixed;
+            right: -350px;
+            bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: right 0.5s ease-in-out;
+            z-index: 1000;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-        .investment-option button i {
-            margin-right: 8px;
-        }
-        .investment-option button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-        .contact {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        .contact a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
+
+        .notification img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>الاستثمار في ملابس وأحذية</h1>
+        <h1>مصطفى المنسي للاستثمار</h1>
     </header>
-    <div class="balance">
-        <i class="fas fa-wallet"></i> الرصيد الحالي: 2000 جنيه
-        <button><i class="fas fa-hand-holding-usd"></i> سحب</button>
-    </div>
     <div class="container">
+        <div class="balance">
+            <p>الرصيد الحالي: 50,000 جنيه</p>
+        </div>
+        <h2>خيارات الاستثمار</h2>
         <div class="investment-option">
-            <div>
-                <h3>الاستثمار في ملابس</h3>
-                <p>استثمر 500 جنيه لتحقق ربحاً بنسبة 20% بعد شهر.</p>
-            </div>
-            <button onclick="investNow('ملابس')"><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
+            <h3><i class="fas fa-money-bill-wave"></i> استثمر 20 جنيه واحصل على 40 جنيه</h3>
+            <button onclick="alert('لقد استثمرت 20 جنيه!')">استثمر الآن</button>
         </div>
         <div class="investment-option">
-            <div>
-                <h3>الاستثمار في أحذية</h3>
-                <p>استثمر 1000 جنيه لتحقق ربحاً بنسبة 25% بعد شهرين.</p>
-            </div>
-            <button onclick="investNow('أحذية')"><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
+            <h3><i class="fas fa-money-bill-wave"></i> استثمر 50 جنيه واحصل على 100 جنيه</h3>
+            <button onclick="alert('لقد استثمرت 50 جنيه!')">استثمر الآن</button>
         </div>
-        <div class="contact">
-            <p>للتواصل مع خدمة العملاء: <a href="tel:+201234567890">01234567890</a></p>
-            <p>أو عبر البريد الإلكتروني: <a href="mailto:info@example.com">info@example.com</a></p>
+        <div class="investment-option">
+            <h3><i class="fas fa-money-bill-wave"></i> استثمر 100 جنيه واحصل على 200 جنيه</h3>
+            <button onclick="alert('لقد استثمرت 100 جنيه!')">استثمر الآن</button>
         </div>
+        <footer>
+            <p>للاتصال بخدمة العملاء، يرجى التواصل معنا عبر الرقم: 01050079125</p>
+        </footer>
     </div>
-    <footer>
-        <p>&copy; 2024 الاستثمار في ملابس وأحذية</p>
-    </footer>
+
+    <div id="notification" class="notification">
+        <img src="https://via.placeholder.com/40" alt="User">
+        <span id="notification-text"></span>
+    </div>
+
     <script>
-        function investNow(type) {
-            alert(`للقيام باستثمار في ${type}، يرجى تحويل 1000 جنيه إلى الرقم 01024713645 لبدء الاستثمار.`);
+        const names = ["أحمد", "مريم", "خالد", "سارة", "محمد"];
+        let currentIndex = 0;
+        const notificationElement = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+
+        function showNotification() {
+            const name = names[currentIndex];
+            notificationText.textContent = `${name} سحب 20000 جنيه! شكراً يا مصطفى.`;
+            notificationElement.style.right = '20px';
+
+            setTimeout(() => {
+                notificationElement.style.right = '-350px';
+            }, 3000);
+
+            currentIndex = (currentIndex + 1) % names.length;
         }
+
+        setInterval(showNotification, 5000);
     </script>
 </body>
 </html>
