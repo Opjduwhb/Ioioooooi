@@ -114,6 +114,38 @@
             height: 40px;
             border-radius: 50%;
         }
+
+        .whatsapp-service {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 25px;
+            padding: 10px 15px;
+            font-size: 18px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .whatsapp-service:hover {
+            background-color: #1ebc57;
+        }
+
+        .whatsapp-service a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .whatsapp-service i {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -148,6 +180,13 @@
     <div id="notification" class="notification">
         <img src="https://via.placeholder.com/40" alt="User">
         <span id="notification-text"></span>
+    </div>
+
+    <div class="whatsapp-service">
+        <a href="https://wa.me/01029836499" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            خدمة عملاء
+        </a>
     </div>
 
     <script>
