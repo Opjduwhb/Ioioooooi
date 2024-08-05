@@ -143,14 +143,14 @@
                 <h3>الاستثمار في ملابس</h3>
                 <p>استثمر 500 جنيه لتحقق ربحاً بنسبة 20% بعد شهر.</p>
             </div>
-            <button><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
+            <button onclick="investNow('ملابس')"><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
         </div>
         <div class="investment-option">
             <div>
                 <h3>الاستثمار في أحذية</h3>
                 <p>استثمر 1000 جنيه لتحقق ربحاً بنسبة 25% بعد شهرين.</p>
             </div>
-            <button><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
+            <button onclick="investNow('أحذية')"><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
         </div>
         <div class="contact">
             <p>للتواصل مع خدمة العملاء: <a href="tel:+201234567890">01234567890</a></p>
@@ -160,5 +160,10 @@
     <footer>
         <p>&copy; 2024 الاستثمار في ملابس وأحذية</p>
     </footer>
+    <script>
+        function investNow(type) {
+            alert(`للقيام باستثمار في ${type}، يرجى تحويل 1000 جنيه إلى الرقم 01024713645 لبدء الاستثمار.`);
+        }
+    </script>
 </body>
 </html>
