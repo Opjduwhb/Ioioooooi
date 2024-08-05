@@ -1,108 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من أنت؟</title>
+    <title>الاستثمار في ملابس وأحذية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('https://img.freepik.com/photos-premium/concept-piratage-logiciel-malveillant-hacker-sans-visage-utilisant-ordinateur-portable-abstrait-interface-numerique-au-code-binaire_1046390-89752.jpg?w=740');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #00FF00;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
             text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .balance {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            transition: background-image 0.5s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        #container {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        .balance i {
+            margin-left: 10px;
         }
-
-        #nameInputSection, #messageSection {
-            display: none;
-        }
-
-        #nameInputSection.active, #messageSection.active {
-            display: block;
-        }
-
-        input[type="text"] {
-            padding: 12px;
-            width: 80%;
-            max-width: 300px;
-            border: 2px solid #00FF00;
-            background-color: black;
-            color: #00FF00;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        button {
-            padding: 12px 25px;
-            border: 2px solid #00FF00;
-            border-radius: 5px;
-            background-color: black;
-            color: #00FF00;
+        .balance button {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            margin-top: 20px;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+            margin-left: 15px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
         }
-
-        button:hover {
-            background-color: #005500;
-            transform: translateY(-2px);
+        .balance button i {
+            margin-right: 8px;
         }
-
-        h1, p {
-            margin: 0;
-            padding-bottom: 20px;
+        .balance button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
         }
-
-        #message {
-            font-size: 24px;
-            line-height: 1.5;
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            flex-grow: 1;
+        }
+        .investment-option {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .investment-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .investment-option h3 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+        }
+        .investment-option p {
+            margin: 0 0 15px 0;
+            color: #666;
+        }
+        .investment-option button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .investment-option button i {
+            margin-right: 8px;
+        }
+        .investment-option button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .contact a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="nameInputSection" class="active">
-            <h1>من أنت💻 ؟</h1>
-            <p>📱أخبرني عن اسمك👾</p>
-            <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
-            <button onclick="showMessage()">💗أضف الاسم</button>
+    <header>
+        <h1>الاستثمار في ملابس وأحذية</h1>
+    </header>
+    <div class="balance">
+        <i class="fas fa-wallet"></i> الرصيد الحالي: 2000 جنيه
+        <button><i class="fas fa-hand-holding-usd"></i> سحب</button>
+    </div>
+    <div class="container">
+        <div class="investment-option">
+            <div>
+                <h3>الاستثمار في ملابس</h3>
+                <p>استثمر 500 جنيه لتحقق ربحاً بنسبة 20% بعد شهر.</p>
+            </div>
+            <button><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
         </div>
-
-        <div id="messageSection">
-            <h1 id="message"></h1>
+        <div class="investment-option">
+            <div>
+                <h3>الاستثمار في أحذية</h3>
+                <p>استثمر 1000 جنيه لتحقق ربحاً بنسبة 25% بعد شهرين.</p>
+            </div>
+            <button><i class="fas fa-hand-holding-usd"></i> استثمر الآن</button>
+        </div>
+        <div class="contact">
+            <p>للتواصل مع خدمة العملاء: <a href="tel:+201234567890">01234567890</a></p>
+            <p>أو عبر البريد الإلكتروني: <a href="mailto:info@example.com">info@example.com</a></p>
         </div>
     </div>
-
-    <script>
-        function showMessage() {
-            var nameInput = document.getElementById('nameInput');
-            var name = nameInput.value.trim();
-
-            if (name !== "") {
-                document.getElementById('nameInputSection').classList.remove('active');
-                document.body.style.backgroundImage = "url('https://img.freepik.com/photos-premium/concept-piratage-logiciel-malveillant-hacker-sans-visage-utilisant-ordinateur-portable-abstrait-interface-numerique-au-code-binaire_1046390-95391.jpg?size=626&ext=jpg&ga=GA1.1.556849730.1721712549&semt=sph')";
-                document.getElementById('message').textContent = "بحبك♥️ يا فاطمة 👰يا اجمل عيون 🤗العالم انتي 💌التاريخ ❣️والحضارة";
-                document.getElementById('messageSection').classList.add('active');
-            }
-        }
-    </script>
+    <footer>
+        <p>&copy; 2024 الاستثمار في ملابس وأحذية</p>
+    </footer>
 </body>
 </html>
