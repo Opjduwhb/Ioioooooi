@@ -3,211 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة للاستثمار</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>الصفحة مهكرة</title>
     <style>
-        /* إعدادات الخطوط والألوان */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
-            color: #212529;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #17a2b8;
+            background-color: #000;
             color: #fff;
-            padding: 20px;
+            font-family: Arial, sans-serif;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 50px;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        h1 {
+            font-size: 48px;
+            color: #f00;
         }
-
-        .balance {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 1.2em;
-            color: #343a40;
+        p {
+            font-size: 24px;
         }
-
-        .investment-option {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .investment-option h3 {
-            color: #343a40;
-            margin: 0;
-            margin-right: 10px;
-            display: inline-block;
-            vertical-align: middle;
-            flex: 1;
-        }
-
-        .investment-option button {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 1em;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        .investment-option button:hover {
-            background-color: #218838;
-        }
-
-        .investment-option img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-left: 15px;
-        }
-
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #6c757d;
-        }
-
-        .notification {
-            position: fixed;
-            right: -350px;
-            bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 15px 30px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: right 0.5s ease-in-out;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .notification img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .whatsapp-service {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: #25d366;
-            color: #fff;
-            border-radius: 25px;
-            padding: 10px 15px;
-            font-size: 18px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-        }
-
-        .whatsapp-service:hover {
-            background-color: #1ebc57;
-        }
-
-        .whatsapp-service a {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .whatsapp-service i {
-            margin-right: 10px;
+        .emoji {
+            font-size: 64px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1> للاستثمار</h1>
-    </header>
-    <div class="container">
-        <div class="balance">
-            <p>الرصيد الحالي: 50,000 جنيه</p>
-        </div>
-        <h2>خيارات الاستثمار</h2>
-        <div class="investment-option">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmwnkvVScO87sryTySC6lgywgrPvbO_cr4A&usqp=CAU" alt="Machine">
-            <h3><i class="fas fa-money-bill-wave"></i> استثمر 20 جنيه واحصل على 40 جنيه</h3>
-            <button onclick="alert('لقد استثمرت 20 جنيه!')">استثمر الآن</button>
-        </div>
-        <div class="investment-option">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmwnkvVScO87sryTySC6lgywgrPvbO_cr4A&usqp=CAU" alt="Machine">
-            <h3><i class="fas fa-money-bill-wave"></i> استثمر 50 جنيه واحصل على 100 جنيه</h3>
-            <button onclick="alert('لقد استثمرت 50 جنيه!')">استثمر الآن</button>
-        </div>
-        <div class="investment-option">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmwnkvVScO87sryTySC6lgywgrPvbO_cr4A&usqp=CAU" alt="Machine">
-            <h3><i class="fas fa-money-bill-wave"></i> استثمر 100 جنيه واحصل على 200 جنيه</h3>
-            <button onclick="alert('لقد استثمرت 100 جنيه!')">استثمر الآن</button>
-        </div>
-        <footer>
-            <p>للاتصال بخدمة العملاء، يرجى التواصل معنا عبر الرقم: </p>
-        </footer>
-    </div>
-
-    <div id="notification" class="notification">
-        <img src="https://via.placeholder.com/40" alt="User">
-        <span id="notification-text"></span>
-    </div>
-
-    <div class="whatsapp-service">
-        <a href="https://wa.me/" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            خدمة عملاء
-        </a>
-    </div>
-
-    <script>
-        const names = ["أحمد", "مريم", "خالد", "سارة", "محمد"];
-        let currentIndex = 0;
-        const notificationElement = document.getElementById('notification');
-        const notificationText = document.getElementById('notification-text');
-
-        function showNotification() {
-            const name = names[currentIndex];
-            notificationText.textContent = `${name} سحب 20000 جنيه! شكراً يا مصطفى.`;
-            notificationElement.style.right = '20px';
-
-            setTimeout(() => {
-                notificationElement.style.right = '-350px';
-            }, 3000);
-
-            currentIndex = (currentIndex + 1) % names.length;
-        }
-
-        setInterval(showNotification, 5000);
-    </script>
+    <h1>تم تهكير الصفحة من قبل البرنس</h1>
+    <p>وتم قفلها وتم الدعس لعدة أسباب:</p>
+    <ul>
+        <li>السبب الأول: منصة تدعو للنصب والاحتيال</li>
+        <li>تم قطع موارد الصفحة</li>
+        <li>تم دعس الصفحة <span class="emoji">👾</span></li>
+    </ul>
 </body>
 </html>
