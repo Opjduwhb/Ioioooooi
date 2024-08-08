@@ -3,34 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة مهكرة</title>
+    <title>توليد أرقام هاتف عشوائية</title>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
+            background-color: #0d1117;
+            color: #c9d1d9;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
         }
-        h1 {
-            font-size: 48px;
-            color: #f00;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #30363d;
         }
-        p {
-            font-size: 24px;
+        a {
+            display: block;
+            margin: 10px 0;
+            color: #58a6ff;
+            text-decoration: none;
         }
-        .emoji {
-            font-size: 64px;
+        a:hover {
+            color: #1f6feb;
+        }
+        #numbers {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #30363d;
+            background-color: #0d1117;
+            overflow-y: scroll;
+            text-align: left;
+        }
+        .number {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <h1>تم تهكير الصفحة من قبل البرنس</h1>
-    <p>وتم قفلها وتم الدعس لعدة أسباب:</p>
-    <ul>
-        <li>السبب الأول: منصة تدعو للنصب والاحتيال</li>
-        <li>تم قطع موارد الصفحة</li>
-        <li>تم دعس الصفحة <span class="emoji">👾</span></li>
-    </ul>
+    <div class="container">
+        <h1>توليد أرقام هاتف عشوائية</h1>
+        <a href="https://www.instagram.com/asshouur?igsh=bm96dnFtcXAxd2Fy" target="_blank">رابط الحساب</a>
+        <div id="numbers"></div>
+    </div>
+
+    <script>
+        function generateRandomNumber(prefix) {
+            let number = prefix;
+            for (let i = 0; i < 9; i++) {
+                number += Math.floor(Math.random() * 10);
+            }
+            return number;
+        }
+
+        function generateNumbers() {
+            const numbers = JSON.parse(localStorage.getItem('generatedNumbers')) || [];
+            const displayArea = document.getElementById('numbers');
+            displayArea.innerHTML = numbers.map(num => `<div class="number">${num} - كلمة سر</div>`).join('');
+
+            const interval = setInterval(() => {
+                const prefix = Math.random() < 0.5 ? "012" : "010";
+                const newNumber = generateRandomNumber(prefix);
+                numbers.push(newNumber);
+                const numberDiv = document.createElement('div');
+                numberDiv.className = 'number';
+                numberDiv.textContent = `${newNumber} - كلمة سر`;
+                displayArea.appendChild(numberDiv);
+                displayArea.scrollTop = displayArea.scrollHeight; // Scroll to bottom
+                localStorage.setItem('generatedNumbers', JSON.stringify(numbers));
+            }, 5000);
+        }
+
+        window.onload = generateNumbers;
+    </script>
 </body>
 </html>
