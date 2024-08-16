@@ -3,88 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توليد أرقام هاتف عشوائية</title>
+    <title>التحقق من الاختراق</title>
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
+            margin-top: 50px;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #161b22;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 1px solid #30363d;
-        }
-        a {
-            display: block;
-            margin: 10px 0;
-            color: #58a6ff;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #1f6feb;
-        }
-        #numbers {
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
+        input {
             padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #30363d;
-            background-color: #0d1117;
-            overflow-y: scroll;
-            text-align: left;
+            margin: 10px;
+            font-size: 16px;
         }
-        .number {
-            animation: fadeIn 1s ease-in-out;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>توليد أرقام هاتف عشوائية</h1>
-        <a href="https://www.instagram.com/asshouur?igsh=bm96dnFtcXAxd2Fy" target="_blank">رابط الحساب</a>
-        <div id="numbers"></div>
+    <h1>ادخل رقم التعريف لاظهار الاختراق الآن</h1>
+    <input type="text" id="idInput" placeholder="رقم التعريف">
+    <button onclick="showInfo()">إظهار</button>
+    <div id="result" class="hidden" style="margin-top: 20px;">
+        <p>اسم الشخص: أحمد محمود أديب</p>
+        <p>من الإسكندرية</p>
     </div>
+    <div id="message" style="margin-top: 20px;"></div>
 
     <script>
-        function generateRandomNumber(prefix) {
-            let number = prefix;
-            for (let i = 0; i < 9; i++) {
-                number += Math.floor(Math.random() * 10);
+        function showInfo() {
+            var id = document.getElementById('idInput').value;
+            var resultDiv = document.getElementById('result');
+            var messageDiv = document.getElementById('message');
+            
+            if (id === '4420') {
+                messageDiv.innerHTML = '<p>يتم الآن معالجة الطلب، يرجى الانتظار 30 ثانية...</p>';
+                setTimeout(function() {
+                    resultDiv.classList.remove('hidden');
+                    messageDiv.innerHTML = '';
+                }, 30000); // 30 ثانية = 30000 مللي ثانية
+            } else {
+                messageDiv.innerHTML = '<p>رقم التعريف غير صحيح، يرجى إدخال الرقم الصحيح.</p>';
+                resultDiv.classList.add('hidden');
             }
-            return number;
         }
-
-        function generateNumbers() {
-            const numbers = JSON.parse(localStorage.getItem('generatedNumbers')) || [];
-            const displayArea = document.getElementById('numbers');
-            displayArea.innerHTML = numbers.map(num => `<div class="number">${num} - كلمة سر</div>`).join('');
-
-            const interval = setInterval(() => {
-                const prefix = Math.random() < 0.5 ? "012" : "010";
-                const newNumber = generateRandomNumber(prefix);
-                numbers.push(newNumber);
-                const numberDiv = document.createElement('div');
-                numberDiv.className = 'number';
-                numberDiv.textContent = `${newNumber} - كلمة سر`;
-                displayArea.appendChild(numberDiv);
-                displayArea.scrollTop = displayArea.scrollHeight; // Scroll to bottom
-                localStorage.setItem('generatedNumbers', JSON.stringify(numbers));
-            }, 5000);
-        }
-
-        window.onload = generateNumbers;
     </script>
 </body>
 </html>
