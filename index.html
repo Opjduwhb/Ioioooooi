@@ -3,55 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التحقق من الاختراق</title>
+    <title>زهرة إسماعيل - منفذ عرض</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
             text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .services, .offers {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 90%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        footer {
             margin-top: 50px;
+            color: #777;
         }
-        input {
+        .service-item, .offer-item {
+            margin: 10px 0;
+        }
+        .offer-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
             padding: 10px;
-            margin: 10px;
-            font-size: 16px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        .offer-image {
+            width: 100px; /* عرض الصورة */
+            height: auto; /* ارتفاع الصورة تلقائي */
+            margin-right: 15px; /* مسافة بين الصورة والنص */
         }
-        .hidden {
-            display: none;
+        .offer-details {
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <h1>ادخل رقم التعريف لاظهار الاختراق الآن</h1>
-    <input type="text" id="idInput" placeholder="رقم التعريف">
-    <button onclick="showInfo()">إظهار</button>
-    <div id="result" class="hidden" style="margin-top: 20px;">
-        <p>اسم الشخص: أحمد محمود أديب</p>
-        <p>من الإسكندرية</p>
-    </div>
-    <div id="message" style="margin-top: 20px;"></div>
 
-    <script>
-        function showInfo() {
-            var id = document.getElementById('idInput').value;
-            var resultDiv = document.getElementById('result');
-            var messageDiv = document.getElementById('message');
-            
-            if (id === '4420') {
-                messageDiv.innerHTML = '<p>يتم الآن معالجة الطلب، يرجى الانتظار 30 ثانية...</p>';
-                setTimeout(function() {
-                    resultDiv.classList.remove('hidden');
-                    messageDiv.innerHTML = '';
-                }, 30000); // 30 ثانية = 30000 مللي ثانية
-            } else {
-                messageDiv.innerHTML = '<p>رقم التعريف غير صحيح، يرجى إدخال الرقم الصحيح.</p>';
-                resultDiv.classList.add('hidden');
-            }
-        }
-    </script>
+    <header>
+        <h1>مرحبًا بكم في منفذ عرض زهرة إسماعيل</h1>
+    </header>
+
+    <div class="container">
+        <p>نحن نقدم أفضل العروض على الأجهزة الكهربائية ومنتجات أخرى. استمتع بالتسوق مع أفضل الأسعار.</p>
+
+        <div class="services">
+            <h2>خدماتنا</h2>
+            <div class="service-item">- منافذ بيع معتمدة في مختلف المناطق</div>
+            <div class="service-item">- خدمات توصيل للطلبات المنزلية</div>
+            <div class="service-item">- استشارات متخصصة في مجال التسويق</div>
+            <div class="service-item">- ورش عمل ودورات تدريبية</div>
+            <div class="service-item">- دعم فني على مدار الساعة</div>
+        </div>
+
+        <div class="offers">
+            <h2>عروضنا</h2>
+            <div class="offer-item">
+                <img src="https://demo.holol.com.eg/alalfy/image/cache/catalog/tlga11-512x512.jpg" alt="ثلاجة" class="offer-image">
+                <div class="offer-details">
+                    <strong>ثلاجة موفرة للطاقة</strong><br>
+                    سعر: 5000 EGP
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="washing_machine.jpg" alt="غسالة" class="offer-image">
+                <div class="offer-details">
+                    <strong>غسالة ملابس مع ضمان 5 سنوات</strong><br>
+                    سعر: 4500 EGP
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="air_conditioner.jpg" alt="مكيف هواء" class="offer-image">
+                <div class="offer-details">
+                    <strong>مكيف هواء مع تركيب مجاني</strong><br>
+                    سعر: 7000 EGP
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="blender.jpg" alt="خلاط كهربائي" class="offer-image">
+                <div class="offer-details">
+                    <strong>خلاط كهربائي</strong><br>
+                    سعر: 750 EGP
+                </div>
+            </div>
+            <div class="offer-item">
+                <img src="water_heater.jpg" alt="سخان مياه" class="offer-image">
+                <div class="offer-details">
+                    <strong>أجهزة تسخين المياه</strong><br>
+                    سعر: 1200 EGP
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 زهرة إسماعيل. جميع الحقوق محفوظة.</p>
+    </footer>
+
 </body>
 </html>
