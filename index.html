@@ -1,130 +1,119 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زهرة إسماعيل - منفذ عرض</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f3f3;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px 0;
-        }
-        .container {
-            padding: 20px;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        h2 {
-            color: #333;
-            margin-top: 20px;
-        }
-        p {
-            font-size: 18px;
-            color: #333;
-        }
-        .services, .offers {
-            background-color: white;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 10px;
-            width: 90%;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            margin-top: 50px;
-            color: #777;
-        }
-        .service-item, .offer-item {
-            margin: 10px 0;
-        }
-        .offer-item {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-        .offer-image {
-            width: 100px; /* عرض الصورة */
-            height: auto; /* ارتفاع الصورة تلقائي */
-            margin-right: 15px; /* مسافة بين الصورة والنص */
-        }
-        .offer-details {
-            text-align: left;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>منصة بيع المحافظ الرقمية</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .wallet-img {
+      width: 200px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .wallet-img:hover {
+      transform: scale(1.05);
+    }
+
+    h2 {
+      color: #222;
+    }
+
+    .price {
+      font-size: 24px;
+      color: #009688;
+      margin: 15px 0;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buy-btn {
+      background: #009688;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background: #00796b;
+    }
+
+    .notice {
+      margin-top: 30px;
+      color: #d32f2f;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>مرحبًا بكم في منفذ عرض زهرة إسماعيل</h1>
-    </header>
+  <header>
+    منصة بيع المحافظ الرقمية
+  </header>
 
-    <div class="container">
-        <p>نحن نقدم أفضل العروض على الأجهزة الكهربائية ومنتجات أخرى. استمتع بالتسوق مع أفضل الأسعار.</p>
-
-        <div class="services">
-            <h2>خدماتنا</h2>
-            <div class="service-item">- منافذ بيع معتمدة في مختلف المناطق</div>
-            <div class="service-item">- خدمات توصيل للطلبات المنزلية</div>
-            <div class="service-item">- استشارات متخصصة في مجال التسويق</div>
-            <div class="service-item">- ورش عمل ودورات تدريبية</div>
-            <div class="service-item">- دعم فني على مدار الساعة</div>
-        </div>
-
-        <div class="offers">
-            <h2>عروضنا</h2>
-            <div class="offer-item">
-                <img src="https://demo.holol.com.eg/alalfy/image/cache/catalog/tlga11-512x512.jpg" alt="ثلاجة" class="offer-image">
-                <div class="offer-details">
-                    <strong>ثلاجة موفرة للطاقة</strong><br>
-                    سعر: 5000 EGP
-                </div>
-            </div>
-            <div class="offer-item">
-                <img src="washing_machine.jpg" alt="غسالة" class="offer-image">
-                <div class="offer-details">
-                    <strong>غسالة ملابس مع ضمان 5 سنوات</strong><br>
-                    سعر: 4500 EGP
-                </div>
-            </div>
-            <div class="offer-item">
-                <img src="air_conditioner.jpg" alt="مكيف هواء" class="offer-image">
-                <div class="offer-details">
-                    <strong>مكيف هواء مع تركيب مجاني</strong><br>
-                    سعر: 7000 EGP
-                </div>
-            </div>
-            <div class="offer-item">
-                <img src="blender.jpg" alt="خلاط كهربائي" class="offer-image">
-                <div class="offer-details">
-                    <strong>خلاط كهربائي</strong><br>
-                    سعر: 750 EGP
-                </div>
-            </div>
-            <div class="offer-item">
-                <img src="water_heater.jpg" alt="سخان مياه" class="offer-image">
-                <div class="offer-details">
-                    <strong>أجهزة تسخين المياه</strong><br>
-                    سعر: 1200 EGP
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/2190/2190552.png" alt="محفظة رقمية" class="wallet-img">
+    <h2>محفظة رقمية - كود رقمي</h2>
+    <div class="price">السعر: 1200 جنيه مصري</div>
+    <div class="description">
+      - المحفظة غير موثقة تمامًا<br>
+      - تستقبل أي نوع من العملات<br>
+      - لا يمكن تتبع المعاملات أو استرداد المبالغ<br>
+      - مثالية للتحويلات السريعة والخفية
     </div>
+    <button class="buy-btn" onclick="alert('يرجى تحويل 1200 جنيه إلى رقم: 01050079125 لإتمام الشراء.')">
+      اشتري الآن
+    </button>
+    <div class="notice">
+      ⚠️ بعد تحويل المبلغ إلى الرقم <strong>01050079125</strong> سيتم تفعيل المحفظة يدويًا.
+    </div>
+  </div>
 
-    <footer>
-        <p>© 2024 زهرة إسماعيل. جميع الحقوق محفوظة.</p>
-    </footer>
+  <footer>
+    جميع الحقوق محفوظة © 2025
+  </footer>
 
 </body>
 </html>
