@@ -2,118 +2,288 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>منصة بيع المحافظ الرقمية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة القروض</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: #f7f7f7;
+      background: linear-gradient(to right, #fefefe, #e3f2fd);
       margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #222;
-      color: #fff;
       padding: 20px;
+      color: #333;
+    }
+
+    h1 {
       text-align: center;
-      font-size: 24px;
-      letter-spacing: 1px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .wallet-img {
-      width: 250px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .wallet-img:hover {
-      transform: scale(1.05);
-    }
-
-    h2 {
-      color: #222;
-    }
-
-    .price {
-      font-size: 24px;
-      color: #009688;
-      margin: 15px 0;
-    }
-
-    .description {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.6;
+      color: #0d47a1;
       margin-bottom: 30px;
+      font-size: 28px;
     }
 
-    .buy-btn {
-      background: #009688;
-      color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
+    .loan-container {
+      max-width: 700px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    .loan-option {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s, background-color 0.3s;
     }
 
-    .buy-btn:hover {
-      background: #00796b;
+    .loan-option:hover {
+      background-color: #e3f2fd;
+      transform: scale(1.01);
     }
 
-    .notice {
-      margin-top: 30px;
-      color: #d32f2f;
-      font-weight: bold;
+    .loan-option.locked {
+      background-color: #eee;
+      color: #aaa;
+      pointer-events: none;
+    }
+
+    .details {
+      display: none;
+      padding: 15px;
+      border-top: 1px solid #ccc;
+      background-color: #f0f9ff;
+      animation: fadeIn 0.4s;
+      border-radius: 0 0 10px 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
       font-size: 16px;
+      box-sizing: border-box;
     }
 
-    footer {
+    button {
+      background-color: #0277bd;
+      color: white;
+      border: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #01579b;
+    }
+
+    .rules, .urgent, .note {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    .rules {
+      background-color: #fffde7;
+      border: 1px dashed #fbc02d;
+    }
+
+    .urgent {
+      background-color: #ffebee;
+      border-left: 5px solid #d32f2f;
+    }
+
+    .note {
       text-align: center;
-      padding: 20px;
-      color: #777;
+      color: #555;
+    }
+
+    .telegram {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .telegram a {
+      background-color: #0088cc;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .telegram a:hover {
+      background-color: #006699;
+    }
+
+    .telegram img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      animation: fadeIn 0.4s;
+    }
+
+    .popup-content h3 {
+      color: #0277bd;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      margin: 10px 0;
+    }
+
+    .popup-content button {
+      margin-top: 15px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .popup-content button:hover {
+      background-color: #b71c1c;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      input, button {
+        font-size: 14px;
+      }
+
+      .loan-option {
+        font-size: 15px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    منصة بيع المحافظ الرقمية
-  </header>
-
-  <div class="container">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToHYpEHRB0pkwsZxcEOo9ILlBoy9btosf4zg&usqp=CAU" alt="محفظة رقمية" class="wallet-img">
-    <h2>محفظة رقمية - كود رقمي</h2>
-    <div class="price">السعر: 1200 جنيه مصري</div>
-    <div class="description">
-      - المحفظة غير موثقة تمامًا<br>
-      - تستقبل أي نوع من العملات<br>
-      - لا يمكن تتبع المعاملات أو استرداد المبالغ<br>
-      - مثالية للتحويلات السريعة والخفية
+  <h1>منصة القروض الكلاسيكية</h1>
+  <div class="loan-container">
+    <div class="loan-option locked">1000 جنيه (مغلق مؤقتًا)</div>
+    <div class="loan-option locked">2000 جنيه (مغلق مؤقتًا)</div>
+    <div class="loan-option" onclick="toggleDetails('loan3000')">3000 جنيه</div>
+    <div class="details" id="loan3000">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="text" placeholder="رقم الهاتف">
+      <button onclick="showPopup()">تفعيل القرض</button>
     </div>
-    <button class="buy-btn" onclick="alert('يرجى تحويل 1200 جنيه إلى رقم: 01050079125 لإتمام الشراء.')">
-      اشتري الآن
-    </button>
-    <div class="notice">
-      ⚠️ بعد تحويل المبلغ إلى الرقم <strong>01050079125</strong> سيتم تفعيل المحفظة يدويًا.
+
+    <div class="loan-option" onclick="toggleDetails('loan4000')">4000 جنيه</div>
+    <div class="details" id="loan4000">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="text" placeholder="رقم الهاتف">
+      <button onclick="showPopup()">تفعيل القرض</button>
+    </div>
+
+    <div class="loan-option" onclick="toggleDetails('loan5000')">5000 جنيه</div>
+    <div class="details" id="loan5000">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="text" placeholder="رقم الهاتف">
+      <button onclick="showPopup()">تفعيل القرض</button>
+    </div>
+
+    <div class="loan-option" onclick="toggleDetails('loan6000')">6000 جنيه</div>
+    <div class="details" id="loan6000">
+      <input type="text" placeholder="الاسم الكامل">
+      <input type="text" placeholder="رقم الهاتف">
+      <button onclick="showPopup()">تفعيل القرض</button>
+    </div>
+
+    <div class="rules">
+      <strong>شروط القرض:</strong>
+      <ul>
+        <li>لا يتم تسليم القرض فورًا.</li>
+        <li>يتم مراجعة طلبك أولاً.</li>
+        <li>للاستلام الفوري تواصل مع الإدارة.</li>
+      </ul>
+    </div>
+
+    <div class="urgent">
+      <strong>هل أنت مستعجل؟</strong><br>
+      تواصل مع الإدارة عبر التليجرام لتسريع استلام القرض.
+    </div>
+
+    <div class="telegram">
+      <a href="https://t.me/Yusef20036" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Icon">
+        تواصل عبر التليجرام الآن
+      </a>
+    </div>
+
+    <div class="note">⚠️ يرجى ملء البيانات بدقة لتسهيل عملية المراجعة.</div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h3>تم استلام طلبك ✅</h3>
+      <p>طلبك قيد المراجعة الآن.</p>
+      <p>قد تستغرق العملية من 3 أيام إلى أسبوع.</p>
+      <p>للاستعجال، تواصل مع الإدارة على التليجرام.</p>
+      <p>⚠️ رسوم الاستعجال: 50 جنيه.</p>
+      <div class="telegram" style="margin-top:15px;">
+        <a href="https://t.me/Yusef20036" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Icon">
+          تواصل معنا على التليجرام
+        </a>
+      </div>
+      <button onclick="hidePopup()">إغلاق</button>
     </div>
   </div>
 
-  <footer>
-    جميع الحقوق محفوظة © 2025
-  </footer>
+  <script>
+    function toggleDetails(id) {
+      const all = document.querySelectorAll('.details');
+      all.forEach(div => { if (div.id !== id) div.style.display = 'none'; });
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
 
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
