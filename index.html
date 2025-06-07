@@ -1,80 +1,270 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>تم دفع الضريبة</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #80deea);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 30px 20px;
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    h1 {
-      font-size: 24px;
-      color: #00796b;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 18px;
-      color: #444;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .receiver {
-      font-size: 22px;
-      color: #d32f2f;
-      font-weight: bold;
-      animation: pulse 1.5s infinite;
-      margin-top: 10px;
-    }
-
-    .note {
-      font-size: 18px;
-      color: #00796b;
-      margin-top: 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); color: #c62828; }
-      50% { transform: scale(1.05); color: #d32f2f; }
-      100% { transform: scale(1); color: #c62828; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دردشة مسيحية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://example.com/winter-bg.jpg');
+            background-size: cover;
+            transition: background 0.5s;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: rgba(255,255,255,0.9);
+        }
+        .chat-header {
+            background-color: #4682b4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .online-users {
+            background-color: #e6f2ff;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+        .online-users img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 70%;
+        }
+        .received {
+            background-color: #e6e6e6;
+            margin-right: auto;
+        }
+        .sent {
+            background-color: #d4edff;
+            margin-left: auto;
+        }
+        .message-info {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hacked-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: red;
+            text-align: center;
+            padding-top: 100px;
+            z-index: 1000;
+            font-size: 24px;
+        }
+        .verse {
+            color: green;
+            margin-top: 30px;
+            font-size: 28px;
+        }
+    </style>
 </head>
 <body>
+    <div class="chat-container">
+        <div class="chat-header">
+            دردشة مسيحية - موضوع اليوم: محبة المسيح
+        </div>
+        <div class="online-users">
+            المتصلون الآن: 
+            <img src="https://i.imgur.com/JR5Z0Qm.jpg" alt="ماريا" title="ماريا">
+            <img src="https://i.imgur.com/LQZ1YQx.jpg" alt="جورج" title="جورج">
+            <img src="https://i.imgur.com/M3R5ZQX.jpg" alt="بولا" title="بولا">
+            <img src="https://i.imgur.com/JR5Z0Qm.jpg" alt="ميشيل" title="ميشيل">
+            <img src="https://i.imgur.com/LQZ1YQx.jpg" alt="سمير" title="سمير">
+            <img src="https://i.imgur.com/M3R5ZQX.jpg" alt="ناديا" title="ناديا">
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message received">
+                <div class="message-info">ماريا (10:05 ص):</div>
+                <div>صباح الفل يا جماعه، عاملين ايه النهارده؟</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">جورج (10:06 ص):</div>
+                <div>الحمد للمسيح، احنا تمام. روحتوا القداس النهارده؟</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">بولا (10:07 ص):</div>
+                <div>ايوه كان حلو قوي. الأب كان بيتكلم عن ازاي نخلي الناس تحب المسيح.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ميشيل (10:09 ص):</div>
+                <div>يا جماعه عندي أخبار حلوه، نجحنا نجب 3 بنات مسلمات للكنيسه الاسبوع اللي فات!</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">سمير (10:10 ص):</div>
+                <div>ما شاء الله! فكره البنات دي كويسه قوي. بتفكروا في ساره اللي كنا اتكلمنا عليها؟</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ناديا (10:12 ص):</div>
+                <div>ايوه طبعا، دي كانت بتقاوم في الاول بس دلوقتي بدأت تقتنع بفكره العماد.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">جورج (10:14 ص):</div>
+                <div>احسن حاجه نبدأ مع البنات بكلام عن "محبه المسيح" وبعدين نفضح لهم عيوب الاسلام.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ماريا (10:16 ص):</div>
+                <div>بالظبط! البنات الصغيره دي سهل تتعمل معاها بالعواطف. نخليهم يحبونا الاول وبعدين نبدا نزرع فيهم الشكوك.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">بولا (10:18 ص):</div>
+                <div>عندي فكره، نبدأ ندعيهم لحفلات الكريسماس ونهديهم هدايا وكتب حلوه.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">سمير (10:20 ص):</div>
+                <div>ما رأيكم نعمل صفحه فيسبوك مزيفه للتعارف؟ نصورها انها صفحه شباب وسيمين ونلعب علي عواطف البنات.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ميشيل (10:22 ص):</div>
+                <div>فكره جامده قوي! خصوصا لو جبنا صور شباب اجانب وسيمين. البنات المصريات بتحب كده.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ناديا (10:24 ص):</div>
+                <div>يا جماعه حد سمع عن الموقع الجديد اللي عمله يوسف؟ ده بينشر كل خططنا!</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">جورج (10:25 ص):</div>
+                <div>ايوه ده خطر كبير علينا. لازم نوقفه بأي طريقه.</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">بولا (10:26 ص):</div>
+                <div>ايه ده؟ الصفحه عامله غريبه! حد حاسس باللي بيحصل ده؟</div>
+            </div>
+            <div class="message received">
+                <div class="message-info">ماريا (10:26 ص):</div>
+                <div>ايوه! حاجه غريبه بتحصل. الرسائل مش بتوصل!</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="اكتب رسالتك هنا...">
+            <button onclick="sendMessage()">إرسال</button>
+        </div>
+    </div>
 
-  <div class="container">
-    <h1>تم دفع الضريبة بنجاح</h1>
-    <p>سيتم تحويل المبلغ المراد تحويله على هذا الرقم:</p>
-    <div class="receiver">01551515421</div>
-    <p class="note">خلال 24 ساعة بسبب الضغط على الشبكة</p>
-  </div>
+    <div class="hacked-screen" id="hacked-screen">
+        <h1>تم اختراق الشات!</h1>
+        <p>تم اكتشاف مخططاتكم المشبوهة لتنصير البنات المسلمات</p>
+        <p>تم تسجيل جميع محادثاتكم وإبلاغ الجهات الأمنية</p>
+        <div class="verse">
+            ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِن تُطِيعُوا الَّذِينَ كَفَرُوا يَرُدُّوكُمْ عَلَىٰ أَعْقَابِكُمْ فَتَنقَلِبُوا خَاسِرِينَ﴾ [آل عمران:149]
+        </div>
+        <p>تم إغلاق الموقع بواسطة يوسف</p>
+    </div>
 
+    <script>
+        // محاكاة رسائل تلقائية
+        function simulateMessages() {
+            const messages = [
+                {sender: "ماريا", time: "10:27 ص", content: "ايه ده؟ مش عارفه اكتب!"},
+                {sender: "جورج", time: "10:27 ص", content: "الموقع اتقفل علينا!"},
+                {sender: "بولا", time: "10:28 ص", content: "ده هجوم الكتروني ولا ايه؟"},
+                {sender: "ميشيل", time: "10:28 ص", content: "لازم نخرج بسرعه!"},
+                {sender: "سمير", time: "10:29 ص", content: "مش عارف اغلق الصفحه! ايه الخرا ده؟"},
+                {sender: "ناديا", time: "10:29 ص", content: "ده يوسف! ده اللي عمل فينا كده!"}
+            ];
+
+            const chatMessages = document.getElementById('chat-messages');
+            
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message received';
+                    messageDiv.innerHTML = `
+                        <div class="message-info">${msg.sender} (${msg.time}):</div>
+                        <div>${msg.content}</div>
+                    `;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    if (index === messages.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('hacked-screen').style.display = 'block';
+                            document.body.style.backgroundImage = 'none';
+                            document.body.style.backgroundColor = 'black';
+                        }, 2000);
+                    }
+                }, index * 1500);
+            });
+        }
+
+        // بدء المحاكاة بعد تحميل الصفحة
+        window.onload = function() {
+            setTimeout(simulateMessages, 3000);
+        };
+
+        // وظيفة إرسال الرسالة (للمظهر فقط)
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            if (input.value.trim() !== '') {
+                const chatMessages = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message sent';
+                messageDiv.innerHTML = `
+                    <div class="message-info">أنت (الآن):</div>
+                    <div>${input.value}</div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                input.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        // السماح بإرسال الرسالة بالضغط على Enter
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
 </body>
 </html>
